@@ -113,7 +113,9 @@ if selected_file is not None:
                         Write me code to perform the user task on my dataframe (titled 'df').
                         Ensure that the code completes the entire spreadsheet. 
                         """
-                        response = openai.ChatCompletion.create(
+                        client = openai.OpenAI()
+
+                        response = client.chat.completions.create(
                             model="gpt-3.5-turbo",
                             messages=[{"role": "system", "content": "You are a helpful assistant that generates Python code."},
                                       {"role": "user", "content": input_prompt}],
