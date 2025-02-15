@@ -76,7 +76,7 @@ if selected_file is not None:
         st.subheader('Step 3: Enter your OpenAI Key')
         st.markdown("<p>An OpenAI key is required to run this application, You can get your own here: <a href=https://platform.openai.com/docs/quickstart#create-and-export-an-api-key><u>Acquire an OpenAI key</u></a>. It does cost money to use tokens to access OpenAI's LLMs, but they are relatively inespensive. You can find more about tokem pricing <a href=https://openai.com/api/pricing/><u>here</u></a>. This app is currently running with gpt-3.5-turbo.<p>",unsafe_allow_html=True)
         open_ai_key = st.text_input("Press enter after entering OpenAI key", key="openAI_key")
-        openai.api_key = open_ai_key
+        #openai.api_key = open_ai_key
         st.write(f"OpenAI Key: {open_ai_key}")
 
         st.subheader('Step 4: Enter the Max Number of Tokens')
@@ -113,7 +113,7 @@ if selected_file is not None:
                         Write me code to perform the user task on my dataframe (titled 'df').
                         Ensure that the code completes the entire spreadsheet. 
                         """
-                        client = openai.OpenAI()
+                        client = openai.OpenAI(api_key=open_ai_key)
 
                         response = client.chat.completions.create(
                             model="gpt-3.5-turbo",
