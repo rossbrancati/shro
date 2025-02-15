@@ -121,7 +121,9 @@ if selected_file is not None:
                                       {"role": "user", "content": input_prompt}],
                             max_tokens=int(max_tokens)
                         )
-                        generated_code = response["choices"][0]["message"]["content"]
+                        # generated_code = response["choices"][0]["message"]["content"] # Old response access
+                        # New reponse access
+                        generated_code = response.choices[0].message.content
 
                         # Display the generated code
                         st.subheader('Generated Python Code:')
